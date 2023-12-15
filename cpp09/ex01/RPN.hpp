@@ -1,38 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 14:53:46 by aminoru-          #+#    #+#             */
-/*   Updated: 2023/12/15 02:38:18 by aminoru-         ###   ########.fr       */
+/*   Created: 2023/12/13 14:57:35 by aminoru-          #+#    #+#             */
+/*   Updated: 2023/12/13 16:02:57 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef RPN_HPP
+# define RPN_HPP
 
 #include <iostream>
-#include <algorithm>
+#include <string>
+#include <stack>
 
-class NotFoundException : public std::exception {
-	virtual const char* what() const throw()
-	{
-		return ("Value not found in container.");
-	};
+class RPN {
+	public:
+		RPN(void);
+		RPN(std::string input);
+		RPN(RPN const& copy);
+		~RPN(void);
+
+		RPN& operator=(RPN const & src);
+
+		void	rpn();
+	private:
+		std::string		_input;
+		std::stack<int> _stack;
+		void	_validateInput();
+		bool	_isTokens(char c);
+		void	_calculateRPN(char c);
+		void	_getResult();
 };
-
-template<typename T>
-typename T::iterator	easyfind(T &cont, int n)
-{
-	typename T::iterator	it;
-
-	it = std::find(cont.begin(), cont.end(), n);
-	if (it == cont.end()) {
-        throw ::NotFoundException();
-    }
-    return it;
-}
 
 #endif

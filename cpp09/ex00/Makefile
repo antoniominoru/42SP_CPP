@@ -6,15 +6,15 @@
 #    By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/28 02:09:23 by aminoru-          #+#    #+#              #
-#    Updated: 2023/12/15 02:38:20 by aminoru-         ###   ########.fr        #
+#    Updated: 2023/12/13 14:42:26 by aminoru-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = easyfind
+NAME = btc
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-HEADER = easyfind.hpp
-SRC = main.cpp 
+HEADER = BitcoinExchange.hpp
+SRC = main.cpp BitcoinExchange.cpp 
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
